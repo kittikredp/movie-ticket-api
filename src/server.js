@@ -5,7 +5,7 @@ import bodyParser from 'body-parser'
 import {dbConfig} from './config/database.config.js'
 
 const app = express()
-const port = process.env.NODE_ENV == 'production' ? 8080:3001
+const port = process.env.NODE_ENV == 'production' ? process.env.PORT:3001
 
 mongoose.Promise = global.Promise
 
