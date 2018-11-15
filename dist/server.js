@@ -33,5 +33,5 @@ app.use(_bodyParser.default.urlencoded({
 app.use(_bodyParser.default.json());
 (0, _movie.default)(app);
 app.listen(port, function () {
-  console.log("Server is listening on port 3000");
+  console.log("Server is listening on port ".concat(port));
 });
