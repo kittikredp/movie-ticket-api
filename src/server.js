@@ -8,7 +8,7 @@ const app = express()
 const port = 3001
 
 mongoose.Promise = global.Promise
-mongoose.connect(dbConfig.url, {
+mongoose.connect(dbConfig(), {
 	useNewUrlParser: true
 }).then(() => {
 	console.log("Successfully connected to the database")    
