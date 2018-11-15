@@ -8,6 +8,8 @@ const app = express()
 const port = 3001
 
 mongoose.Promise = global.Promise
+
+console.log('getting dbb url', dbConfig())
 mongoose.connect(dbConfig(), {
 	useNewUrlParser: true
 }).then(() => {
