@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "babel --presets=@babel/preset-env src --out-dir dist",
-    "start": "nodemon --exec babel-node src/server.js --presets=@babel/preset-env"
+		"build": "babel --presets=@babel/preset-env src --out-dir dist",
+		"start": "npm run build && node dist/server.js",
+    "dev": "nodemon --exec babel-node src/server.js --presets=@babel/preset-env"
   },
   "author": "",
   "license": "ISC",
