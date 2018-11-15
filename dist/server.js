@@ -13,8 +13,9 @@ var _databaseConfig = require("./config/database.config.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express.default)();
-var port = 3001;
+var port = process.env.NODE_ENV == 'production' ? 8080 : 3001;
 _mongoose.default.Promise = global.Promise;
+console.log('getting dbb url', (0, _databaseConfig.dbConfig)());
 
 _mongoose.default.connect((0, _databaseConfig.dbConfig)(), {
   useNewUrlParser: true
