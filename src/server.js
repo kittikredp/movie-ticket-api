@@ -1,7 +1,8 @@
 import express from 'express'
-import routes from './app/routes/movie.routes'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
+import cors from 'cors'
+import routes from './app/routes/movie.routes'
 import {dbConfig} from './config/database.config.js'
 
 const app = express()
@@ -19,6 +20,7 @@ mongoose.connect(dbConfig(), {
 	process.exit()
 })
 
+app.use(cors())
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
