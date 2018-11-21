@@ -1,0 +1,13 @@
+// insert field with value to all document in a collection
+// in this case the value is date with random value
+// default update command of mongodb is update with $set that can update many doc in one time
+// in this case, the date value would be vary with random function, so update in one time would get same date value
+// to solve the problem looping through collection may be a way
+
+// First define random date function in mongodb shell with (since first day of 2018 until current date)
+
+function getDate() { return new Date(new Date(2018, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2018, 0, 1).getTime()))}
+
+// Second, set the random date with previous function
+
+db.[collection].find().forEach(function(item){ db.[collection].update( {_id: item._id}, {$set: {[newDateField]: getDate()}} )})
