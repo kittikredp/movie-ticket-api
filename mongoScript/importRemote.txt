@@ -1,0 +1,1 @@
+mongoimport -h ds161856.mlab.com --port 61856 -d heroku_p4n5qj4m -c movies -u [user] -p [password] --type json --file C:/movies.json
