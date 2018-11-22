@@ -4,7 +4,8 @@ const MovieSchema = mongoose.Schema({
 	title: String,
 	overview: String,
 	posterPath: String,
-	ticketFee: Number
+	ticketFee: Number,
+	releaseDate: Date
 }, {
 		timestamps: true
 })

@@ -1,13 +1,11 @@
 import Movie from '../models/movie.model.js'
 import {uploadPoster} from './uploadPoster'
 
-const getServerUrl = (req) => `${req.protocol}://${req.get('host')}`
-
 export const createMovie = (req, res) => {
 	uploadPoster(req, res,(error) => {
 		if (error) {
 			return res.status(400).send({
-					message: "Upload failed."
+					message: error || "Upload failed."
 				})
 		} 
 		if(!req.body) {
@@ -15,12 +13,12 @@ export const createMovie = (req, res) => {
 					message: "Request body can not be empty"
 				})
 		}
-		const posterPath = `${getServerUrl(req)}/poster/${req.file.filename}`
 		const movie = new Movie({
 			title: req.body.title, 
-			posterPath: posterPath,
+			posterPath: req.file.location,
 			overview: req.body.overview,
-			ticketFee: req.body.ticketFee
+			ticketFee: req.body.ticketFee,
+			releaseDate: req.body.releaseDate
 		})
 		
 		movie.save().then(data => {
